@@ -24,9 +24,10 @@ function isAllowedDomain(referrer, patterns) {
 }
 
 const urlParams = new URLSearchParams(window.location.search);
-const v = decodeURIComponent(atob(urlParams.get('v')).replaceAll('\\x','%'));
+const id = urlParams.get('v');
+const v = decodeURIComponent(atob(id).replaceAll('\\x','%'));
 const t = JSON.parse("[" + atob(urlParams.get('t')) + ']');
-
+        
 if (!(referrer && isAllowedDomain(referrer, allowedDomains))) {
     document.body.innerHTML = "Unauthorized access";
 }
